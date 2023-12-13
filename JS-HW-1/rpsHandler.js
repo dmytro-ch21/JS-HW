@@ -1,16 +1,33 @@
-document.getElementById('text-input').addEventListener('submit', function(event){
+document.getElementById('gameForm').addEventListener('submit', function(event){
     event.preventDefault();
-    var userSelection = document.getElementById('textInput').value.toLowerCase();
+    let userSelection = document.querySelector('input[name=choice]:checked').value;
     
-    const playOptions = ['paper', 'scissors', 'rock']
-    let computerSelection = Math.floor(Math.random() * playOptions.length)
-    let userIndexOption = playOptions.indexOf(userSelection)
-
-    if(userIndexOption === computerSelection + 1 || userIndexOption === computerSelection - 2){
-        console.log("You WON =) " + playOptions[userIndexOption] + " beats " + playOptions[computerSelection])
-    } else if (userIndexOption === computerSelection){
-        console.log("It's a tie! " + '\n You selected: ' + playOptions[userIndexOption] + '\n Computer selection ' + playOptions[computerSelection])
-    } else {
-        console.log("You LOST =( " + playOptions[computerSelection] + " beats " + playOptions[userIndexOption])
+    if(userSelection === null){
+        alert("Invalid input! Please choose ROck, Paper or Scissors");
+        return;
     }
+
+    const result = determineWinner(userSelection, computerIndexChoice());
+    alert(result);
 })
+
+
+function determineWinner(userChoice, computerChoice){
+    const playOptions = ['paper', 'scissors', 'rock']
+    let userIndexOption = playOptions.indexOf(userChoice);
+
+    if (userIndexOption === computerChoice){
+        return `It's a tie! \n You selected: ${playOptions[userIndexOption]} \n Computer selection ${playOptions[computerChoice]}`
+    }
+
+    if(userIndexOption === computerChoice + 1 || userIndexOption === computerChoice - 2){
+        return `You WON =)${playOptions[userIndexOption]} beats ${playOptions[computerChoice]}`
+    }
+    
+    return `You LOST =( ${playOptions[computerChoice]} beats ${playOptions[userIndexOption]}`
+}
+
+function computerIndexChoice(){
+    const playOptions = ['paper', 'scissors', 'rock']
+    return Math.floor(Math.random() * playOptions.length)
+}

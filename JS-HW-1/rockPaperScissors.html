@@ -44,9 +44,14 @@
 </head>
 <body>
     <div class="text-form">
-        <h2>Rock Paper Scissors:<br> What do you choose?</h2>
-        <form id="text-input">
-            <input type="text" id="textInput" placeholder="Enter: Rock, Paper or Scissors" required>
+        <label for="textInput">Rock Paper Scissors:<br> What do you choose?</label>
+        <form id="gameForm">
+            <input type="radio" id="rock" name="choice" value="rock">
+            <label for="rock">Rock</label>
+            <input type="radio" id="paper" name="choice" value="paper">
+            <label for="paper">Paper</label>
+            <input type="radio" id="scissors" name="choice" value="scissors">
+            <label for="scissors">Scissors</label>
             <button type="submit">Play!</button>
         </form>
     </div>
