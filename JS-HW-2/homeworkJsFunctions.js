@@ -131,3 +131,40 @@ function mergeObjects(obj1, obj2){
   console.log(mergeObjects(myObj1, myObj2))
 
 /* --------------------------------------------------------------------------------------------- */
+
+/* 
+6. Write a function power that takes a base and returns a function. 
+The returned function, when invoked with an exponent, should calculate 
+and return the result of the base raised to that exponent. 
+Use memoization to optimize repeated calculations. 
+*/
+
+function power(base){
+    let cachedExponents = {}
+    return (exponent) => {
+        if(cachedExponents[exponent] !== undefined){
+            console.log('Cached result returned: ' + cachedExponents[exponent]);
+            return cachedExponents[exponent]
+        }
+        let num = 1;
+        for(let i = 1; i <= exponent; i++){
+            num *= base;
+        }
+        cachedExponents[exponent] = num;
+        return num;
+    }
+}
+
+let powerOfTwo = power(2)
+let powerOfThree= power(3)
+let powerOfNine = power(9)
+let powerOfTwentyTwo = power(22)
+
+console.log(powerOfTwo(200));
+console.log(powerOfThree(200));
+console.log(powerOfNine(200));
+console.log(powerOfTwentyTwo(200));
+console.log(powerOfThree(20));
+console.log(powerOfThree(20));
+
+/* --------------------------------------------------------------------------------------------- */
