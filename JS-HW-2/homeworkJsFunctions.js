@@ -15,7 +15,6 @@ function checkIfPalindrome(input){
     }
     return clearedInput.join('') === clearedInput.reverse().join('');
 }
-
 // Tests
 // expected true
 console.log('racecar -> ' + checkIfPalindrome('racecar'))
@@ -45,6 +44,13 @@ function sumOfPositives(arr){
     return result;
 }
 
+// better solution after research
+function sumOfPositives2(arr) {
+    return arr.reduce((sum, currentValue) => {
+        return currentValue > 0 ? sum + currentValue : sum;
+    }, 0);
+}
+
 //Tests
 console.log(sumOfPositives([1,-2,3,5,-6,4,1])) // 14
 console.log(sumOfPositives([2.5, -1.3, 0.8, -4.2, 3.7, -2.1])) // 7
@@ -60,9 +66,7 @@ given the array [1, 2, 3, 4, 5] and 2 steps, the rotated array should be [4, 5, 
 */
 
 function rotateArrayFor(arr, times){
-    
     let modifiedArray = arr;
-    console.log(modifiedArray);
     while (times-- > 0) {
         let lastElement = modifiedArray.pop();
         modifiedArray.unshift(lastElement)  
@@ -113,6 +117,11 @@ function mergeObjects(obj1, obj2){
     }
     return mergedObj;
   }
+
+  // better solution with spread operator after a bit of research
+  function mergeObjectEfficiently(obj1, obj2){
+    return {...obj1, ...obj2}
+  }
   
   // Test
   let myObj1 = {
@@ -129,7 +138,7 @@ function mergeObjects(obj1, obj2){
   }
   
   console.log(mergeObjects(myObj1, myObj2))
-
+  console.log(mergeObjectEfficiently(myObj1, myObj2))
 /* --------------------------------------------------------------------------------------------- */
 
 /* 
@@ -140,7 +149,7 @@ Use memoization to optimize repeated calculations.
 */
 
 function power(base){
-    let cachedExponents = {}
+    const cachedExponents = {}
     return (exponent) => {
         if(cachedExponents[exponent] !== undefined){
             console.log('Cached result returned: ' + cachedExponents[exponent]);
