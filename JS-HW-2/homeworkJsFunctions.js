@@ -28,6 +28,8 @@ console.log('a -> ' + checkIfPalindrome('a'))
 console.log('Hello -> ' + checkIfPalindrome('Hello'))
 console.log('Palindrome -> ' + checkIfPalindrome('Palindrome'))
 
+/* --------------------------------------------------------------------------------------------- */
+
 /*
 2. Implement a function that takes an array of numbers and returns the sum of all positive
 numbers in the array.
@@ -50,6 +52,7 @@ console.log(sumOfPositives([12, 3.14, 7.5, 0.9, 100])) // 123.53...
 console.log(sumOfPositives([-15, -7.8, -2.3, -0.5, -100])) // 0
 console.log(sumOfPositives([10, -5, 'hello', -2.5, true, -8])) // 11 -> because true is considered 1 
 
+/* --------------------------------------------------------------------------------------------- */
 
 /*
 3. Implement a function to rotate an array to the right by a given number of steps. For example,
@@ -72,3 +75,59 @@ console.log(rotateArrayFor([1, 2, 3, 4, 5], 2));
 console.log(rotateArrayFor([6, 7, 8, 9, 10], 5)); 
 console.log(rotateArrayFor([11, 12, 13, 14, 15], 8)); 
 
+/* --------------------------------------------------------------------------------------------- */
+
+/*
+4. Create a function that takes an object as input and returns an array of its values. The order of
+values in the array should correspond to the order of properties in the object.
+*/
+
+function getObjectValues(obj){
+    return Object.values(obj);
+}
+
+// Tests
+let myObj = {
+    name: "John",
+    age: 30,
+    city: "New York",
+    profession: "Plumber"
+}
+
+console.log(getObjectValues(myObj))
+
+/* --------------------------------------------------------------------------------------------- */
+
+/*
+5. Implement a function that merges two objects. If the same property exists in both objects,
+the value in the second object should overwrite the value in the first object.
+*/
+
+function mergeObjects(obj1, obj2){
+    let mergedObj = {}
+    for(let key in obj1){
+      mergedObj[key] = obj1[key]
+    }
+    for(let key in obj2){
+      mergedObj[key] = obj2[key]
+    }
+    return mergedObj;
+  }
+  
+  // Test
+  let myObj1 = {
+      name: "John",
+      age: 30,
+      city: "New York",
+      profession: "Plumber"
+  }
+  
+  let myObj2 = {
+      lastName: "Potter",
+      age: 34, // override 
+      county: "Broward",
+  }
+  
+  console.log(mergeObjects(myObj1, myObj2))
+
+/* --------------------------------------------------------------------------------------------- */
